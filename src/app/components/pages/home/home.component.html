@@ -1,1 +1,7 @@
-<p>Home</p>
+<div class="home-container">
+    <h1>See the trends</h1>
+    <!--search-->
+    <div *ngFor="let moment of moments"> <!--foreach-->
+        <h2>{{ moment.title }}</h2> 
+    </div>
+</div>

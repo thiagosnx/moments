@@ -14,7 +14,7 @@ export class NewMomentComponent {
 
   constructor(private momentService:MomentService, private messagesService:MessagesService, private router:Router){}
 
-  async createHandler(moment: Moment){
+  async createHandler(moment: Moment){ //logica q cria o handler de novo moment que dps chama o metodo post pra concretizar
     const formData = new FormData()
 
     formData.append("title", moment.title);

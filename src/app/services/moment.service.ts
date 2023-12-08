@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { Moment } from '../Moments';
+import { Response } from '../Response';
 import { environment } from '../../enviroments/enviroment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,11 @@ export class MomentService {
 
   constructor(private http: HttpClient) { }
 
-  createMoment(formData: FormData):Observable<FormData>{
-    return this.http.post<FormData>(this.apiUrl, formData);
+  getMoments():Observable<Response<Moment[]>> { //aqui o observable recebe uma resposta que contem um o array de moments
+    return this.http.get<Response<Moment[]>>(this.apiUrl);
   }
+
+  createMoment(formData: FormData):Observable<FormData>{ //post
+    return this.http.post<FormData>(this.apiUrl, formData);
+  }//logica que chama a logica do newmoment.ts pra fazer uma requisição post
 }
