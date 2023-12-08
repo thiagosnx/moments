@@ -27,4 +27,9 @@ export class MomentService {
   createMoment(formData: FormData):Observable<FormData>{ //post
     return this.http.post<FormData>(this.apiUrl, formData);
   }//logica que chama a logica do newmoment.ts pra fazer uma requisição post
+
+  removeMoment(id:number){
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete(url);
+  }
 }
