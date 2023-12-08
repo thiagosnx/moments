@@ -6,6 +6,7 @@ import { Response } from '../Response';
 import { environment } from '../../enviroments/enviroment';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,5 +32,10 @@ export class MomentService {
   removeMoment(id:number){
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url);
+  }
+
+  updateMoment(id:number, formData:FormData):Observable<FormData>{
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<FormData>(url, formData);
   }
 }
