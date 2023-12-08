@@ -1,7 +1,18 @@
 <div class="home-container">
     <h1>See the trends</h1>
     <!--search-->
-    <div *ngFor="let moment of moments"> <!--foreach-->
-        <h2>{{ moment.title }}</h2> 
+    <div *ngIf="moments.length > 0; else noMoments">
+        <div class="moments-container">
+            <div class="moment" *ngFor="let moment of moments"> <!--foreach-->
+                <img src="{{baseApiUrl}}/uploads/{{moment.image}}" alt="{{moment.title}}">
+                <h3>{{ moment.title }}</h3> 
+                <p class="date">Date: {{moment.created_at}}</p>
+                <p>Comments: {{moment.comments!.length}}</p>
+                <p><a routerLink="moments/{{moment.id}}">See more</a></p>
+            </div>
+        </div>
     </div>
+    <ng-template #noMoments>
+        <h1>No moments here!</h1>
+    </ng-template>
 </div>
