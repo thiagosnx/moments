@@ -17,7 +17,7 @@ export class HomeComponent {
   baseApiUrl = environment.baseApiUrl;
 
 
-  //search
+
 
   constructor(private momentService: MomentService){}
   
@@ -31,6 +31,19 @@ export class HomeComponent {
 
       this.allMoments = data; //passando os dados pro front
       this.moments = data;
-    })
+    });
+  }
+
+  //search
+  faSearch = faSearch
+  searchTerm: string = "";
+
+  search(e:Event):void{ //evento do input
+    const target = e.target as HTMLInputElement //pegando oq vem do input
+    const value = target.value //definindo o valor
+
+    this.moments = this.allMoments.filter((moment)=>{ //filtrando todos os momentos pelo value do input
+      return moment.title.toLowerCase().includes(value);
+    });
   }
 }

@@ -1,6 +1,14 @@
 <div class="home-container">
     <h1>See the trends</h1>
     <!--search-->
+    <div class="search-container">
+        <form>
+            <fa-icon [icon]="faSearch"></fa-icon>
+            <input type="text" placeholder="Search"
+            (input)="search($event)"> <!--pega o conteudo conforme é digitado no input-->
+
+        </form>
+    </div>
     <div *ngIf="moments.length > 0; else noMoments">
         <div class="moments-container">
             <div class="moment" *ngFor="let moment of moments"> <!--foreach-->
